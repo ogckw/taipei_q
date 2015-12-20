@@ -1,5 +1,4 @@
 # Project taipeiq is for quality of Taipei
-now we move to data_defination
 ### Project Leader:Han
 #### - Member: Leo, Ivan, Hsien, Hwa, Eason ,Yang
 ---------------------------------------
@@ -11,17 +10,18 @@ now we move to data_defination
         20150922 decide the project direction
                ||
                \/
+               
         20150930 decide map presentation
                ||
                \/
         20151006 decide how to breakdown into the work 
                ||
                \/
-        20151218 the project presentation
+        20151217 the project presentation
 ---------------------------------------
 ### The Project Progress Timeline
         Prefinish expectation:12/11 (a week for test and debug) 
-        Deadline:12/18
+        Deadline:12/17
         start form here 
         ||
         \/       
@@ -48,13 +48,13 @@ now we move to data_defination
 - Web : Han, Leo 
 
 ---------------------------------------
-### Working Gudie index
+### Working Gudie in dataclean
 
 - First doing tutorials  how to data clean 
   
        for understand how to deal with different dataframe and format to csv
 	   
-	   xml and csv download and solve in Python
+	   xml and csv download and solve in python
 
 - Second input data to database
        

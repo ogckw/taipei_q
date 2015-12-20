@@ -1,0 +1,110 @@
+---
+title: "The Life Area"
+author: "hsu"
+date: "2015年11月2日"
+output: ioslides_presentation
+---
+
+## 生活圈大小如何定義
+
+- 地理名詞:生活圈是指在某一個範圍內，其滿足家庭或個人於工作、交通、居住、文化、教育、醫療和娛樂等基本生活需求的區域，形成了一個圈形的社區中心或居住範圍。（資料來源：台灣高中地理課本）
+
+- 重新定義生活範圍:住在台北，步行十分鐘左右的距離。（購物、飲食、教育、捷運站、公車站等設施）當然！越近越好!(我們的定義)
+
+
+<img src="E:\\bitbucket\\data_defination\\Blender3D_NormalWalkCycle.gif">
+
+
+
+## 人類步行的速度
+
+- 平均老年人步行的速度是3.2 km/h ~ 3.9 km/h，
+
+      年輕人則為3.75 km/h ~ 5.43 km/h(資料來源:維基百科)
+      
+- 切網格的邏輯走路10~15分鐘可以到達的範圍
+
+      選定500公尺X500公尺為一個網格單位
+
+  時間 | 10分鐘距離|15分鐘距離
+------------- | -------------|------------
+老人 | 500公尺~650公尺       |750公尺~975公尺
+年輕人 | 625公尺~950公尺     |938公尺~1425公尺
+
+
+## 網格切割：以內湖區為例
+```{r echo=FALSE ,include=FALSE}
+library(leaflet)
+library(rgdal)
+library(RColorBrewer)
+library(dplyr)
+library(plyr)
+data = readLines("E:\\bitbucket\\dataclean\\taipeigrid\\area\\grid_edgegrid\\neihugrida.csv") 
+data = iconv(data, "utf8","utf8")
+data = read.csv(textConnection(data),encoding='utf8')
+
+data2 = readLines("E:\\bitbucket\\data_defination\\taipeigridF.csv") 
+data2 = iconv(data2, "utf8","utf8")
+data2 = read.csv(textConnection(data2),encoding='utf8') 
+```
+```{r echo=FALSE}
+leaflet(data) %>% addTiles()%>%
+    addRectangles(
+    lng1=data$log4, lat1=data$lat4,
+    lng2=data$log1, lat2=data$lat1,
+    fillColor = "transparent",
+  ) 
+
+```
+
+
+
+## 網格切割：整個台北
+```{r echo =FALSE}
+
+color = c ('#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a','#ffff99','#b15928')
+factpal <- colorFactor(color, data2$area)
+
+leaflet(data2) %>% addTiles()%>%
+    addRectangles(
+    lng1=data2$log4, lat1=data2$lat4,
+    lng2=data2$log1, lat2=data2$lat1,
+    color = ~factpal(area)
+  ) %>% addLegend(pal = factpal, values = ~area, opacity = 1)
+```
+
+
+## 看起來很漂亮 但...待修正如下:
+
+- 修正補網格
+
+- 決定區跟區邊界
+
+
+## 演算法核心:一個比對的概念1
+    for (i in 1:nrow(taipei)){
+        a = taipei$lat1[i] < areaedge$lat & areaedge$lat < taipei$lat4[i]
+        b = taipei$log1[i] < areaedge$log & areaedge$log < taipei$log4[i]
+        true1 = which(a)
+        true2 = which(b)
+        edge = any(true1 %in% true2)
+        if (edge==TRUE){
+            vec = c(vec, i)
+        }
+    }
+    areaedgegrid = taipei[vec,]
+    
+## 演算法核心:一個比對的概念2
+    Maxrow = max(areaedgegrid$row)
+    Minrow =  min(areaedgegrid$row)
+    areagrid = data.frame()
+    for (i in Minrow :Maxrow) {
+        x = subset(areaedgegrid,row ==i)
+        y = subset(taipei,row == i)
+        selectrow = subset(y, min(x$col)<=col&col<=max(x$col))
+        areagrid = rbind(areagrid,selectrow)
+    }
+
+
+
+
