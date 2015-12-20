@@ -1,5 +1,5 @@
 # Project taipeiq is for quality of Taipei
-now we move to https://bitbucket.org/taipeiq/data_defination
+now we move to data_defination
 ### Project Leader:Han
 #### - Member: Leo, Ivan, Hsien, Hwa, Eason ,Yang
 ---------------------------------------
