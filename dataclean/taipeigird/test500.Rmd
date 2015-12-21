@@ -1,0 +1,25 @@
+---
+title: "test500"
+author: "hsu"
+date: "2015年10月31日"
+output: html_document
+---
+
+```{r}
+
+library(leaflet)
+library(rgdal)
+library(RColorBrewer)
+data = readLines("E:\\bitbucket\\dataclean\\taipeigrid\\test500.csv") 
+data = iconv(data, "utf8","utf8")
+data = read.csv(textConnection(data),encoding='utf8')
+
+
+leaflet(data) %>% addTiles()%>%
+    addRectangles(
+    lng1=data$log4, lat1=data$lat4,
+    lng2=data$log1, lat2=data$lat1,
+    fillColor = "transparent"
+  ) 
+
+```

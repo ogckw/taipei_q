@@ -1,0 +1,76 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<HTML>
+	<HEAD>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="">
+		<script src=""></script>
+		<title>hotMap</title>
+		<style>
+			div#buttonArea{
+				width:100%;
+				height:90px;
+				border:1px solid red;
+				float:left;
+			}
+			div.button{
+				width:100px;
+				height:50px;
+				border:1px solid blue;
+				background-color:red;
+				margin:20px;
+				float:left;
+			}
+			iframe#hotMap{
+				border:20px solid black;
+				float:left;
+			}
+			img{
+				width:40px;
+				height:40px;
+				float:right;
+				margin:5px 5px;
+			}
+		</style>
+		<!-- <script>
+			function changeMap(sw){
+				var map;
+				if (sw = 0){
+					map = "https://leoking3305.cartodb.com/viz/d49273da-8902-11e5-916b-0ecd1babdde5/embed_map"
+				}if(sw = 1){
+					map = "https://www.google.com"
+				}if(sw = 1){
+					map = "https://www.yahoo.com"
+				}
+				document.getElementById("hotMap").src = map;
+			}
+		</script> -->
+	</HEAD>
+	<BODY style="overflow:hidden">
+		<div id="buttonArea">
+			<a href="https://leoking3305.cartodb.com/viz/d49273da-8902-11e5-916b-0ecd1babdde5/embed_map" target="iframe_tr">
+				<div id="security" class="button">
+				
+				</div>
+			</a>
+			
+			<a href="https://www.google.com/html/" target="iframe_tr">
+				<div id="env" class="button">
+				
+				</div>
+			</a>
+			
+			<a href="https://www.yahoo.com/html/" target="iframe_tr">
+				<div id="disater" class="button">
+					
+				</div>
+			</a>
+			
+			<a href="#">
+				<img src="{% static 'images/home.png'%}" onclick="javascript:location.href='/nonrelblog/homePage'">
+			</a>
+		</div>
+		
+		<iframe id="hotMap" name="iframe_tr" width="97.5%" height="520" frameborder="0" src="https://www.google.com.tw" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+	</BODY>
+</HTML>

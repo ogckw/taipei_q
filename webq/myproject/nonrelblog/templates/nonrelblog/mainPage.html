@@ -1,0 +1,239 @@
+{% csrf_token %}
+<!DOCTYPE html>
+<HTML>
+ 	<HEAD>
+     	<meta charset="UTF-8">
+		<!-- Google Font -->
+		<link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/earlyaccess/cwtexyen.css' rel='stylesheet' type='text/css'>
+		
+		<!-- own -->
+		<link rel="stylesheet" href="/static/css/selector.css">
+		<link rel="stylesheet" href="/static/css/mainPage.css">
+		
+		<!-- Icon API -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<link rel="shortcut icon" type="image/x-icon" href="/static/images/OTaipei_icon.png">
+		
+		<!-- JQuary -->
+        <script src="/static/js/jquery-1.11.3.min.js"></script>
+		<script src="/static/js/jquery-ui.js"></script>
+		<script src="/static/js/mainPage.js"></script>
+		<link rel="stylesheet" href="/static/css/jquery-ui.css">
+		
+		<!-- Google Map API -->
+		<!-- <script src="http://maps.googleapis.com/maps/api/js"></script>
+		<script src="js/mapAPI.js"></script> -->
+		
+		<!-- Mapbox API -->
+		<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+		<script src="/static/js/l.control.geosearch.js"></script>
+		<script src="/static/js/l.geosearch.provider.google.js"></script>
+		<script src="/static/js/Leaflet.MakiMarkers.js"></script>
+		<link rel="stylesheet" href="/static/css/l.geosearch.css" />
+		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css">
+		<link rel="stylesheet" href="/static/css/MarkerCluster.css" />
+		<!-- <link rel="stylesheet" href="/static/css/MarkerCluster.Default.css" /> -->
+		<script src="/static/js/leaflet.markercluster.js"></script>
+		<link rel="stylesheet" href="/static/css/popupstyle.css" />		
+		<!-- <script src="js/MBmap.js"></script> -->
+		<!-- highcharts plugin -->
+		<script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+		<!-- Dashboard CSS -->
+		<link rel="stylesheet" href="/static/css/dash.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<link href='https://fonts.googleapis.com/css?family=Fredoka+One' rel='stylesheet' type='text/css'>
+		
+		<title>OTaipei | 主頁</title>
+		
+</HEAD>
+	<BODY>
+		<div id="big_pic">
+			<header>
+				<img id="logo_banner" src="/static/images/OTaipei_banner.png" onclick="javascript:location.href='/nonrelblog/homePage'">
+				
+				<div id="theme">
+					<span id="theme_text">生活品質地圖</span>
+				</div>
+<div id="hotnews" onclick="javascript:location.href='/nonrelblog/hotNews/'">
+					<img src="/static/images/OTaipei_Icon-19.png">
+					<span id="news_span_bar">地方大事</span><br>
+					<p id="btm_cor_news" "><p>
+				</div>
+				<div id="hotmap" onclick="javascript:location.href='/nonrelblog/hotMap'">
+					<img src="/static/images/OTaipei_Icon-18.png">
+					<span id="hot_span_bar">動態地圖</span><br>
+					<p id="btm_cor_hot"><p>
+				</div>
+			</header>
+			
+			<div id="selectors">
+				<div id="order_bar">
+					<div id="num_bar">
+						<div id="num1" class="num">1</div>
+						<div id="num2" class="num">2</div>
+						<div id="num3" class="num">3</div>
+						<div id="num4" class="num">4</div>
+						<div id="num5" class="num">5</div>
+						<div id="num6" class="num">6</div>
+					</div>
+                    <div id="hoverDiv"></div>
+					<ol id="sortable">
+						
+						<li id="o1">
+							<img id="f1" class="factor" src="/static/images/public.png" hover_txt="公共設施">
+						</li>
+						
+						<li id="o2">
+							<img id="f2" class="factor" src="/static/images/env.png" hover_txt="環境品質">
+						</li>
+						<li id="o3">
+							<img id="f3" class="factor" src="/static/images/traffic.png" hover_txt="交通機能">
+						</li>
+						
+						<li id="o4">
+							<img id="f4" class="factor" src="/static/images/disaster.png" hover_txt="環境災害">
+						</li>
+						<li id="o5">
+							<img id="f5" class="factor" src="/static/images/shopping.png" hover_txt="購物機能">
+						</li>
+						
+						<li id="o6">
+							<img id="f6" class="factor" src="/static/images/security.png" hover_txt="生活安全">
+						</li>
+					</ol>
+				</div>
+				<div id="button_bar">
+					<button id="default">預設</button>
+					<button id="submit">送出</button>
+				</div>
+				<div id="trigger_bar">
+					<!-- <i class="fa fa-angle-double-left fa-1x"></i>
+					<i class="fa fa-angle-double-left fa-1x"></i>
+					<i class="fa fa-angle-double-left fa-1x"></i>
+					<i class="fa fa-angle-double-left fa-1x"></i>
+					<i class="fa fa-angle-double-left fa-1x"></i>
+					<i class="fa fa-angle-double-left fa-1x"></i><br> -->
+					<a id = "queryp">優先順序</a>
+					<i id="direct" class="fa fa-angle-double-right fa-2x"></i>
+					<!-- <i class="fa fa-angle-double-right fa-1x"></i>
+					<i class="fa fa-angle-double-right fa-1x"></i>
+					<i class="fa fa-angle-double-right fa-1x"></i>
+					<i class="fa fa-angle-double-right fa-1x"></i>
+					<i class="fa fa-angle-double-right fa-1x"></i>
+					<i class="fa fa-angle-double-right fa-1x"></i> -->
+				</div>
+			</div>
+			<section>
+				<div id="label">
+					<!-- <div id="labelin">+</div> -->
+					<div id="labelin">
+						<img id="imgbtn" src="/static/images/minus.png" class="minus">
+					</div>
+					<div id="dashboard">
+						<ul class="first_lev">
+							<li class="front_factor"><i class="fa fa-university fa-2x"></i><a>公共設施</a>
+								<ul class="second_lev">
+									<li>
+										<input name="public_loc" value=1 type="checkbox">
+										<i id="plushospy" class="fa fa-plus-square fa-1x"></i>
+										<a id="hospy_txt">醫院</a>
+									</li>
+									<li>
+										<input name="public_loc" value=1 type="checkbox">
+										<i class="fa fa-graduation-cap fa-1x"></i>
+										<a>學校</a>
+									</li>
+									<li>
+										<input name="public_loc" value=1 type="checkbox">
+										<i class="fa fa-futbol-o fa-1x"></i>
+										<a id="park_txt">公園</a>
+									</li>
+								</ul>
+							</li>
+							<li class="front_factor"><i class="fa fa-rocket fa-2x"></i><a> 交通機能</a>
+								<ul class="second_lev">
+									<li>
+										<input name="traffic_loc" value=1 type="checkbox">
+										<i class="fa fa-subway fa-1x"></i>
+										<a id="mrt_txt">捷運站</a>
+									</li>
+									<li>
+										<input name="traffic_loc" value=1 type="checkbox">
+										<i class="fa fa-bus fa-1x"></i>
+										<a id="bus_txt">公車站</a>
+									</li>
+									<li>
+										<input name="traffic_loc" value=1 type="checkbox">
+										<i class="fa fa-bicycle fa-1x"></i>
+										<a>腳踏車站</a>
+									</li>
+								</ul>
+							</li>
+							<li class="front_factor"><i class="fa fa-gift fa-2x"></i><a>購物機能</a>
+								<ul class="second_lev">
+									<li>
+										<input name="shopping_loc" value=1 type="checkbox">
+										<i class="fa fa-suitcase fa-1x"></i>
+										<a id="phy_txt">連鎖藥妝</a>
+									</li>
+									<li>
+										<input name="shopping_loc" value=1 type="checkbox">
+										<i class="fa fa-shopping-bag fa-1x"></i>
+										<a>夜市商圈</a>
+									</li><br>
+									<li>
+										<input name="shopping_loc" value=1 type="checkbox">
+										<i class="fa fa-shopping-cart fa-1x"></i>
+										<a id="spm_txt">連鎖超市</a>
+									</li>
+									<li>
+										<input name="shopping_loc" value=1 type="checkbox">
+										<i class="fa fa-cutlery fa-1x"></i>
+										<a id="cvs_txt">便利商店</a>
+									</li>
+								</ul>
+							</li>
+							<li class="back_factor">
+								<i id="security_icon" class="fa fa-shield fa-2x"></i>
+								<a onclick="javascript:location.href='/nonrelblog/hotMap.#tabs-1'">生活安全</a>
+							</li><br>
+							<li class="back_factor">
+								<i class="fa fa-exclamation-triangle fa-2x"></i>
+								<a onclick="javascript:location.href='/nonrelblog/hotMap.#tabs-2'">環境災害</a>
+							</li><br>
+							<li class="back_factor">
+								<i id="env_icon" class="fa fa-tree fa-2x"></i>
+								<a onclick="javascript:location.href='/nonrelblog/hotMap.#tabs-3'">環境品質</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class = "custom-popup" id="gmap"></div>
+				<!-- <div id="feature_infos"> 123456 -->
+					<div id="feature_infos">
+                        <ul>
+							<li><a href="#tabs-1">生活品質</a></li>
+							<li><a href="#tabs-2">CP值</a></li>
+							<li id = "tab3" ><a id="tab3_a" href="#tabs-1" >－</a></li>
+						</ul>
+						<div id="tabs-1" class = "sizeTab">
+				             請點擊地圖上網格
+						</div>
+						<div id="tabs-2" class = "sizeTab">
+							請點擊地圖上網格
+					    </div>
+						
+			   	
+				<!-- <span id="left_bottom">Clickresult: </span> -->
+                     <!--  <span id="info"></span>
+                </div> -->
+			</section>
+		</div>
+		<!-- <script></script> -->
+        <script src="/static/js/app.js"></script>
+	</BODY>
+</HTML>
+

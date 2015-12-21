@@ -1,0 +1,273 @@
+---
+title: "Taipei_lifeq_env"
+author: "Ivan"
+date: "2015年12月1日"
+output: html_document
+---
+
+
+```{r}
+####### env_category
+library(plyr)
+library(DBI)
+library(gWidgets)
+library(RMySQL)
+library(dbConnect)
+library(leaflet)
+library(rgdal)
+library(RColorBrewer)
+library(dplyr)
+library(cluster)
+#### step1: 連結資料庫篩選資料
+# con = dbConnect(MySQL(), dbname = "test", username="root", password="zb10305")
+# dbSendQuery(con,"SET NAMES utf8") 
+# dbClearResult(dbListResults(con)[[1]])
+# sql= "select * from taipei_lifeq"
+# lifeq = dbGetQuery(con,sql)
+# if (dbMoreResults(con)) dbNextResults(con)
+# dbDisconnect(con)
+# 
+# ## 確認無噪音資料的分布位置
+# ## 部分為市區車流階段 > 改以適合評分區域平均進行插補
+# # table(lifeq$e1_noise_score)
+# # 
+# # lifeq$test=0
+# # lifeq[lifeq$e1_noise_score > 0 ,]$test = 1
+# # 
+# # lifeq$test = as.character(lifeq$test)
+# # content = as.character(paste(lifeq$row,lifeq$col,lifeq$test,sep=","))
+# # 
+# # color = c('#d7e2f4','#fec8a5')
+# # factpal = colorFactor(color, lifeq$test)
+# # 
+# # leaflet(lifeq) %>% addTiles()%>%
+# #     addRectangles(
+# #     lng1=lifeq$log4, lat1=lifeq$lat4,
+# #     lng2=lifeq$log1, lat2=lifeq$lat1,
+# #     popup=content,
+# #     color = ~factpal(test)
+# #   ) %>% addLegend(pal = factpal, values = ~test, opacity = 1)
+# 
+# 
+# ## 定義不適合評分的區域為: 無學校/無醫院/且於交易紀錄網格
+# nolifeq =  subset(lifeq ,  p1_hospital_score == 0 & p3_school_score == 0 &  sale_trade_no == 0 )
+# 
+# nrow(nolifeq)
+# 
+# ## 篩選後續進行五等區分資料集
+# forgrade =  subset(lifeq ,  p1_hospital_score != 0 | p3_school_score != 0 | sale_trade_no != 0 )
+# 
+# nrow(forgrade)
+# 
+# ## 差補資料 : 0 以平均值代入
+# forgrade[forgrade$e1_noise_score == 0,]$e1_noise_score =
+# mean(forgrade[forgrade$e1_noise_score > 0,]$e1_noise_score)
+# 
+# forgrade$e1_noise_score = scale(forgrade$e1_noise_score*-1, center = TRUE, scale = TRUE)*10 + 50
+# forgrade$e2_air_score = scale(forgrade$e2_air_score, center = TRUE, scale = TRUE)*10 + 50
+# 
+# 
+# forgrade =  subset(lifeq ,  e1_noise_score != 0 )
+# nrow(forgrade)
+# 
+# ## 探索變數
+# summary(forgrade[,c('e1_noise_score','e2_air_score')])
+# table(forgrade$e1_noise_score)
+# 
+# boxplot(forgrade[,c('e1_noise_score','e2_air_score')])
+# pairs(forgrade[,c('e1_noise_score','e2_air_score')])
+# cor(forgrade[,c('e1_noise_score','e2_air_score')])
+# table(forgrade$e1_noise_score)
+# table(forgrade$e2_air_score)
+# hist(forgrade$e1_noise_score)
+# hist(forgrade$e2_air_score)
+# 
+# temp = select(forgrade, noindex, e1_noise_score, e2_air_score) 
+# 
+# # training data
+# env_fork = temp
+# env_fork$noindex = NULL   # 指定為NULL, 非分群欄位
+# pairs(env_fork)
+# cor(env_fork)
+# 
+# 
+# #### step2: kmeans 分群 sec
+# set.seed(7689)
+# 
+# kfit = kmeans(env_fork,5)
+# par(mfrow=c(1,1))
+# with(env_fork, plot(e1_noise_score, e2_air_score, col=kfit$cluster, pch=as.numeric(kfit$cluster)))
+# 
+# kfit$centers
+# # points(kfit$centers[,c('p1_hospital_score','p2_park_score')], col = 1:5, pch = 8, cex=2)
+# 
+# table(kfit$cluster)
+# aggregate(p1_hospital_score ~ kfit$cluster, summary, data=pub_fork)
+# aggregate(p2_park_score ~ kfit$cluster, summary, data=pub_fork)
+# aggregate(p3_school_score ~ kfit$cluster, summary, data=pub_fork)
+# 
+# par(mfrow=c(2,2))
+# boxplot(p1_hospital_score~kfit$cluster, data=pub_fork)
+# boxplot(p2_park_score~kfit$cluster, data=pub_fork)
+# boxplot(p3_school_score~kfit$cluster, data=pub_fork)
+# 
+# par(mfrow=c(1,1))
+# barplot(t(kfit$centers), beside = TRUE,xlab="cluster", ylab="value")
+# 
+# 
+# ## 如何決定K值 : 
+# #(1) Average silhouette width --> 值越大表示組間差異大、組內差異小
+# set.seed(7689)
+# km = kmeans(pub_fork, 5)
+# kms = silhouette(km$cluster,dist(pub_fork))
+# summary(kms)
+# plot(kms)
+# # 透過不同分群群組找出最大值 --> 4
+# # install.packages("fpc")
+# library(fpc)
+# nk = 2:6
+# SW = sapply(nk, function(k) {
+#   cluster.stats(dist(pub_fork), kmeans(sec_fork, centers=k)$cluster)$avg.silwidth
+# })
+# plot(nk, SW, type="l", xlab="number of clusers", ylab="average silhouette width")
+# 
+# #(2) WSS 找到組內距離總和緩降的一點 --> 邊際效用遞減
+# nk = 2:10
+# set.seed(22)
+# WSS = sapply(nk, function(k) {kmeans(pub_fork, centers=k)$tot.withinss})
+# WSS
+# plot(nk, WSS, type="l", xlab= "number of k", ylab="within sum of squares")
+# 
+# 
+# library(NbClust)
+# NbClust(pub_fork, distance = "euclidean", min.nc = 2,max.nc = 6 ,method = "kmeans" , index = "all")
+
+
+
+```
+
+```{r, echo=FALSE}
+####### env_category
+
+#### step1: 連結資料庫篩選資料
+con = dbConnect(MySQL(), dbname = "test", username="root", password="zb10305")
+dbSendQuery(con,"SET NAMES utf8") 
+dbClearResult(dbListResults(con)[[1]])
+sql= "select * from taipei_lifeq"
+lifeq = dbGetQuery(con,sql)
+if (dbMoreResults(con)) dbNextResults(con)
+dbDisconnect(con)
+
+## 定義不適合評分的區域為: 無學校/無醫院/且於交易紀錄網格
+nolifeq =  subset(lifeq ,  p1_hospital_score == 0 & p3_school_score == 0 &  sale_trade_no == 0 )
+
+nrow(nolifeq)
+
+## 篩選後續進行五等區分資料集
+forgrade =  subset(lifeq ,  p1_hospital_score != 0 | p3_school_score != 0 | sale_trade_no != 0 )
+
+nrow(forgrade)
+
+## 差補資料 : 0 改以適合評分且有值者的平均值代入.(因考量無車流測站區塊已篩選至市區, 故不以最小值, 採平均值替代)
+# 
+# summary(lifeq[,c('e1_nightnoise','e1_daynoise')])
+# mean(forgrade[forgrade$e1_nightnoise > 0,]$e1_nightnoise)
+# mean(forgrade[forgrade$e1_daynoise > 0,]$e1_daynoise)
+# 
+# hist(forgrade[forgrade$e1_nightnoise > 0,]$e1_nightnoise)
+# hist(forgrade[forgrade$e1_nightnoise > 0,]$e1_daynoise)
+
+forgrade[forgrade$e1_nightnoise == 0,]$e1_nightnoise =
+mean(forgrade[forgrade$e1_nightnoise > 0,]$e1_nightnoise)
+
+forgrade[forgrade$e1_daynoise == 0,]$e1_daynoise =
+mean(forgrade[forgrade$e1_daynoise > 0,]$e1_daynoise)
+
+par(mfrow=c(1,1))
+cor(forgrade$e1_nightnoise,forgrade$e1_daynoise)
+plot(forgrade$e1_nightnoise,forgrade$e1_daynoise)
+str(forgrade)
+which(forgrade$e1_nightnoise > forgrade$e1_daynoise)
+
+## 標準化分數資料
+temp = select(forgrade, noindex, e1_daynoise,
+              e1_nightnoise,e2_psiover50_day,e2_pmover35_day) 
+
+temp$e1 = temp$e1_daynoise + temp$e1_nightnoise
+temp$e2 = temp$e2_psiover50_day + temp$e2_pmover35_day
+
+temp$noise_zs = scale(temp$e1, center = TRUE, scale = TRUE)*10 + 50
+temp$air_zs = scale(temp$e2, center = TRUE, scale = TRUE)*10 + 50
+
+
+
+## 探索變數
+
+temp$env_score = temp$noise_zs + temp$air_zs
+
+# training data
+env_fork = temp[,c('noindex','env_score')]
+env_fork$noindex = NULL   # 指定為NULL, 非分群欄位
+
+#### step2: kmeans 分群 sec
+set.seed(7896)
+
+kfit = kmeans(env_fork,5)
+par(mfrow=c(1,1))
+
+hist(temp$e2_pmover35_day)
+hist(temp$e2_psiover50_day)
+
+
+kfit$centers
+points(kfit$centers[,c('env_score')], col = 1:5, pch = 8, cex=2)
+
+table(kfit$cluster)
+par(mfrow=c(2,2))
+boxplot(e1_daynoise~kfit$cluster, data=forgrade)
+boxplot(e1_nightnoise~kfit$cluster, data=forgrade)
+boxplot(e2_psiover50_day~kfit$cluster, data=forgrade)
+boxplot(e2_pmover35_day~kfit$cluster, data=forgrade)
+
+par(mfrow=c(1,1))
+barplot(t(kfit$centers), beside = TRUE,xlab="cluster", ylab="value")
+
+
+## 如何決定K值 : 
+library(NbClust)
+NbClust(env_fork, distance = "euclidean", min.nc = 2,max.nc = 6 ,method = "kmeans" , index = "all")
+
+
+#### step3: 合併分群結果
+forgrade$env_cluster = kfit$cluster
+nolifeq$env_cluster = "no score"
+lifeq = rbind(nolifeq, forgrade) 
+lifeq = arrange(lifeq, noindex) 
+
+## 重新編碼次序分數
+lifeq$env_grade = "0"
+lifeq[lifeq[,c('env_cluster')] == 4 ,]$env_grade = "1"
+lifeq[lifeq[,c('env_cluster')] == 2 ,]$env_grade = "2"
+lifeq[lifeq[,c('env_cluster')] == 1 ,]$env_grade = "3"
+lifeq[lifeq[,c('env_cluster')] == 3 ,]$env_grade = "4"
+lifeq[lifeq[,c('env_cluster')] == 5 ,]$env_grade = "5"
+lifeq[lifeq[,c('env_cluster')] == 'no score' ,]$env_grade = "no score"
+
+
+lifeq$env_grade = as.character(lifeq$env_grade)
+
+content = as.character(paste(lifeq$row,lifeq$col,lifeq$env_grade,lifeq$e1_daynoise,lifeq$e1_nightnoise,lifeq$e2_psiover50_day,lifeq$e2_pmover35_day,sep=","))
+
+color = c('#da4801','#6583b8','#d7e2f4','#fec8a5','#7a9645','#ebecea')
+factpal = colorFactor(color, lifeq$env_grade)
+
+leaflet(lifeq) %>% addTiles()%>%
+    addRectangles(
+    lng1=lifeq$log4, lat1=lifeq$lat4,
+    lng2=lifeq$log1, lat2=lifeq$lat1,
+    popup=content,
+    color = ~factpal(env_grade)
+  ) %>% addLegend(pal = factpal, values = ~env_grade, opacity = 1)
+
+
+```

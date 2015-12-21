@@ -1,0 +1,139 @@
+{% csrf_token %}
+
+<!DOCTYPE html>
+<html>
+    <HEAD>
+        <meta charset="UTF-8">
+        <title>OTaipei | 地方大事</title>
+    
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="/static/css/hotnews.css" />
+		<!-- bubble cloud -->
+		<link rel="stylesheet" href="/static/css/hotNews_bubble.css" />
+		<script src="/static/js/libs/modernizr-2.0.6.min.js"></script> 
+		<!-- google font -->
+		<link href='http://fonts.googleapis.com/earlyaccess/cwtexyen.css' rel='stylesheet' type='text/css' />
+		<!-- Icon API -->
+		<link rel="shortcut icon" type="image/x-icon" href="/static/images/OTaipei_icon.png" />
+		<!-- jQuery -->
+		<script src="/static/js/jquery-1.11.3.min.js"></script> 
+		<script src="/static/js/jquery-ui.min.js"></script> 
+		<script src="/static/js/news.js"></script> 
+		<!-- D3.js -->
+		<!--  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script> -->
+	</HEAD>
+	<BODY>
+		<header>
+			<img id="logo_banner" src="/static/images/OTaipei_banner.png"
+			onclick="javascript:location.href='/nonrelblog/homePage'" />
+			<div id="theme">
+				<span id="theme_txt">地方大事</span>
+			</div>
+			<div id="mainpage" onclick="javascript:location.href='/nonrelblog/mainPage'">
+				<img src="/static/images/OTaipei_Icon-20.png" /> 
+				<span>生活品質</span>
+			</div>
+			<div id="hotmap" onclick="javascript:location.href='/nonrelblog/hotMap'">
+				<img src="/static/images/OTaipei_Icon-18.png" /> 
+				<span>動態地圖</span>
+			</div>
+		</header>
+		<section>
+			<div id="left_park">
+				<button id="t01" class="btn">中山區</button> 
+				<button id="t02" class="btn">中正區</button> 
+				<button id="t03" class="btn">松山區</button> 
+				<button id="t04" class="btn">文山區</button> 
+				<button id="t05" class="btn">大安區</button> 
+				<button id="t06" class="btn">大同區</button> 
+				<button id="t07" class="btn">士林區</button> 
+				<button id="t08" class="btn">北投區</button> 
+				<button id="t09" class="btn">萬華區</button> 
+				<button id="t10" class="btn">信義區</button> 
+				<button id="t11" class="btn">南港區</button> 
+				<button id="t12" class="btn">內湖區</button>
+				<div id="emotion">地方情緒</div>
+				<img id="face" src="/static/images/like.png">
+				<!-- <img id="face" src="static/images/dislike.png" /> -->
+			</div>	
+			<div id="cneter_park">
+				<div id="main" role="main">
+					<div id="vis"></div>
+					<!--  <div id="status"></div> -->
+					<div id="controls">
+						<h3>抖動控制
+							<form id="jitter" oninput="output.value = (jitter_input.value / 200).toFixed(3)">
+								<input id="jitter_input" type="range" min="0" max="400" value="100" style="width:240px;" /> 
+								<output name="output" for="input">0.5</output>
+							</form>
+						</h3>
+					</div>
+				</div>
+			</div>
+			<div id="right_park">
+				<div id="news">
+					<div id="news_record1" class="rd_box">
+						<div id="news_populr" class="populr_box"></div>
+						<div id="news_title" class="title_box"><a href=""></a></div>
+						<div id="news_time" class="time_box"></div>
+					</div>
+					<div id="news_record2" class="rd_box">
+						<div id="news_populr" class="populr_box"></div>
+						<div id="news_title" class="title_box"><a href=""></a></div>
+						<div id="news_time" class="time_box"></div>
+					</div>
+					<div id="news_record3" class="rd_box">
+						<div id="news_populr" class="populr_box"></div>
+						<div id="news_title" class="title_box"><a href=""></a></div>
+						<div id="news_time" class="time_box"></div>
+					</div>
+					<div id="news_record4" class="rd_box">
+						<div id="news_populr" class="populr_box"></div>
+						<div id="news_title" class="title_box"><a href=""></a></div>
+						<div id="news_time" class="time_box"></div>
+					</div>
+					<div id="news_record5" class="rd_box">
+						<div id="news_populr" class="populr_box"></div>
+						<div id="news_title" class="title_box"><a href=""></a></div>
+						<div id="news_time" class="time_box"></div>
+					</div>
+				</div>
+				<hr>
+				<div id="ptt">
+					<div id="ptt_record1" class="rd_box">
+						<div id="ptt_populr" class="populr_box"></div>
+						<div id="ptt_title" class="title_box"><a href=""></a></div>
+						<div id="ptt_time" class="time_box"></div>
+					</div>
+					<div id="ptt_record2" class="rd_box">
+						<div id="ptt_populr" class="populr_box"></div>
+						<div id="ptt_title" class="title_box"><a href=""></a></div>
+						<div id="ptt_time" class="time_box"></div>
+					</div>
+					<div id="ptt_record3" class="rd_box">
+						<div id="ptt_populr" class="populr_box"></div>
+						<div id="ptt_title" class="title_box"><a href=""></a></div>
+						<div id="ptt_time" class="time_box"></div>
+					</div>
+					<div id="ptt_record4" class="rd_box">
+						<div id="ptt_populr" class="populr_box"></div>
+						<div id="ptt_title" class="title_box"><a href=""></a></div>
+						<div id="ptt_time" class="time_box"></div>
+					</div>
+					<div id="ptt_record5" class="rd_box">
+						<div id="ptt_populr" class="populr_box"></div>
+						<div id="ptt_title" class="title_box"><a href=""></a></div>
+						<div id="ptt_time" class="time_box"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</BODY>
+	
+   <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.2.min.js"><\/script>')</script>
+    <script defer="defer" src="/static/js/plugins.js"></script> 
+    <script src="/static/js/libs/coffee-script.js"></script> 
+    <script src="/static/js/libs/d3.min.js"></script> 
+    <script type="text/javascript" src="/static/coffee/vis.js"></script> 
+    <script type="text/javascript"></script></body>
+</html>

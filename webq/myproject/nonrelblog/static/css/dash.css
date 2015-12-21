@@ -1,0 +1,124 @@
+#label{
+	width:195px;
+	height:30px;
+	background-color:white;
+	/* background-color:#61aeec; */
+	border-radius:5px;
+	position:absolute;
+	right:0px;
+	z-index:3;
+	cursor:pointer;
+}
+#labelin{
+	width:30px;
+	height:30px;
+	position:absolute;
+	background-color:#3f72e9;
+	color:#61aeec;
+	font-size:27px;
+	text-align:center;
+	font-weight:bold;
+	border-radius:3px;
+	color:white;
+	z-index:6;
+	box-shadow: #555 0 0 5px;
+}
+#labelin > #imgbtn{
+	width:30px;
+	height:30px;
+}
+#dashboard{
+	width:165px;
+	height:555px;
+	background-color:white;
+	/* border:1px solid gray; */
+	position:absolute;
+	right:0px;
+	z-index:5;
+	box-shadow: #555 0 0 10px; 
+}
+.first_lev{
+	list-style:none;
+	margin-top:15px;
+	margin-left:-20px;
+	cursor: default;
+}
+.first_lev > li{
+	color:steelblue;
+	width:170px;
+	margin-left:-15px;
+	/* background-color:red; */
+	/* cursor:pointer; */
+}
+.first_lev > li:not(.front_factor){
+	transform: translateZ(0);
+	transition-duration: 0.3s;
+	transition-property: color, background-color;
+	cursor:pointer;
+}
+.first_lev > li:not(.front_factor):hover{
+	background-color: #2098d1;
+	width:155px;
+	color: white;
+}
+.first_lev > li > i{
+	margin-left:5px;
+	/* background-color:red; */
+}
+.first_lev > li > a{
+	margin-left:30px;
+	margin-top:10px;
+	font-weight:bold;
+	font-size:20px;
+	/* background-color:red; */
+	position:absolute;
+	left:25px;
+	Font-family:'cwTeXYen', sans-serif;
+}
+.first_lev > li > #security_icon{
+	margin-left:10px;
+}
+.first_lev > li > #env_icon{
+	margin-left:8px;
+}
+.second_lev{
+	list-style:none;
+	display:inline-block;
+	/* background-color:red; */
+}
+.second_lev > li{
+	display:inline-block;
+	padding:5px;
+	margin-left:-30px;
+	margin-right:35px;
+	Font-family:'cwTeXYen', sans-serif;
+	/* background-color:red; */
+}
+.second_lev > li > i{
+	margin-left:5px;
+	/* background-color:red; */
+}
+.second_lev > li > #plushospy{
+	margin-left:8px;
+}
+.second_lev > li > #hospy_txt {
+	margin-left:5px;
+}
+.second_lev > li > #park_txt {
+	margin-left:5px;
+}
+.second_lev > li > #mrt_txt {
+	margin-left:7px;
+}
+.second_lev > li > #bus_txt {
+	margin-left:7px;
+}
+.second_lev > li > #phy_txt {
+	margin-left:1px;
+}
+.second_lev > li > #spm_txt {
+	margin-left:1px;
+}
+.second_lev > li > #cvs_txt {
+	margin-left:2px;
+}

@@ -1,0 +1,89 @@
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>OTaipei | 動態地圖</title>
+		
+		<!-- google font -->
+		<link href='http://fonts.googleapis.com/earlyaccess/cwtexyen.css' rel='stylesheet' type='text/css'>
+		
+		<!-- Hot Map CSS -->
+		<link rel="stylesheet" href="/static/css/hotMap.css">
+		<link rel="stylesheet" href="/static/css/jquery-ui.css">
+
+		
+		<!-- Hot Map Jquery -->
+		<!-- <script src="js/jquery-1.10.2.js"></script> -->
+		<script src="/static/js/jquery-1.11.3.min.js"></script>
+		<script src="/static/js/jquery-ui.min.js"></script>
+		<script src="/static/js/hotmap.js"></script>
+		
+		<!-- Icon API -->
+		<link rel="shortcut icon" type="image/x-icon" href="/static/images/OTaipei_icon.png">
+	</head>
+	<body>
+		<header>
+			<img id="logo_banner" src="/static/images/OTaipei_banner.png" onclick="javascript:location.href='/nonrelblog/homePage'">
+
+			
+			<div id="theme">
+
+				<span id="theme_txt">動態地圖</span>
+			</div>
+			<div id="hotnews" onclick="javascript:location.href='/nonrelblog/hotNews'">
+				<img src="/static/images/OTaipei_Icon-19.png">
+				<span id="news_span_bar">地方大事</span>
+				<p id="btm_cor_news"></p>
+
+			</div>
+			<div id="mainpage" onclick="javascript:location.href='/nonrelblog/mainPage'">
+				<img src="/static/images/OTaipei_Icon-20.png">
+				<span id="lq_span_bar">生活品質</span>
+				<p id="btm_cor_lq"></p>
+
+			</div>
+		</header>
+		<div id="tabs">
+			<ul>
+				<li><a href="#tabs-1">守望之眼</a></li>
+				<li><a href="#tabs-2">宵小出沒</a></li>
+				<li><a href="#tabs-3">罪惡都市</a></li>
+				<li><a href="#tabs-4">城市泳池</a></li>
+				<li><a href="#tabs-5">大地反撲</a></li>
+				<li><a href="#tabs-6">噪音夢饜</a></li>
+				<li><a href="#tabs-7">懸浮入侵</a></li>
+				<li><a href="#tabs-8">廢氣壟罩</a></li>
+			</ul>
+			<div id="tabs-1">
+				<iframe class="hotmap" frameborder="0" src="https://ivan6062.cartodb.com/viz/b9b95388-9d95-11e5-830b-0e31c9be1b51/embed_map" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+			</div>
+			<div id="tabs-2">
+				<iframe class="hotmap" frameborder="0" src="https://ivan6062.cartodb.com/viz/fe0f0b36-9da9-11e5-be7d-0ecd1babdde5/embed_map" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+			</div>
+			<div id="tabs-3">
+				<iframe class="hotmap" frameborder="0" src="https://ivan6062.cartodb.com/viz/b43c4efc-9d80-11e5-84da-0e787de82d45/embed_map" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+			</div>
+			<div id="tabs-4">
+				<iframe class="hotmap" frameborder="0" src="https://wingdern1019.cartodb.com/viz/38fc775e-97e4-11e5-b8a2-0e5db1731f59/embed_map" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+
+			</div>
+			<div id="tabs-5">
+				<iframe class="hotmap" frameborder="0" src="https://fidoyang.cartodb.com/viz/39042a24-9999-11e5-a795-0e8c56e2ffdb/embed_map" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+
+			</div>
+			<div id="tabs-6">
+				<iframe class="hotmap" frameborder="0" src="https://ivan6062.cartodb.com/viz/76e9bf36-9efb-11e5-b9a3-0e674067d321/embed_map" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+
+			</div>
+			<div id="tabs-7">
+				<iframe class="hotmap" frameborder="0" src="https://wingdern1019.cartodb.com/viz/1eeb7440-9f1a-11e5-87d5-0ecfd53eb7d3/embed_map" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+			</div>
+			<div id="tabs-8">
+				<iframe class="hotmap" frameborder="0" src="https://wingdern1019.cartodb.com/viz/3b4b0566-9f00-11e5-8713-0ea31932ec1d/embed_map" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+			</div>
+		</div>
+
+
+	</body>
+</html>

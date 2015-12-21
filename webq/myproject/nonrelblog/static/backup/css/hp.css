@@ -1,0 +1,21 @@
+#leftSide{
+	width:200px;
+	height:590px;
+	border:1px solid red;
+	float:left;
+	margin:10px 10px;
+}
+#center{
+	width:781px;
+	height:590px;
+	border:1px solid yellow;
+	float:left;
+	margin:10px 10px;
+}
+#rightSide{
+	width:200px;
+	height:590px;
+	border:1px solid green;
+	float:left;
+	margin:10px 10px;
+}

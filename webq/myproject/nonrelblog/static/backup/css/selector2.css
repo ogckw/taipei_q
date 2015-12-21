@@ -1,0 +1,76 @@
+#selectors{
+	width:1100px;
+	height:100px;
+	background-color:gray;
+	border-radius:50px;
+	position:absolute;
+	z-index:10;
+	top:50px;
+	left:-990px;
+}
+#order_bar{
+	width:880px;
+	height:100px;
+	/* background-color:purple; */
+	float:left;
+	margin-left:20px;
+}
+#num_bar{
+	width:880px;
+	height:20px;
+	/* background-color:green; */
+}
+.num{
+	width:100px;
+	height:20px;
+	float:left;
+	margin-left:30px;
+	margin-right:10px;
+	background-color:orange;
+	text-align:center;
+	font-weight:bold;
+	font-size:20px;
+}
+#sortable{
+	height:0px;
+	list-style-type: none;
+	margin-top:0px;
+	background-color:green;
+}
+#sortable > li{
+	float:left;
+	margin-left:-10px;
+	margin-right:50px;
+}
+.factor{
+	width:100px;
+	height:80px;
+	
+}
+#button_bar{
+	width:80px;
+	height:100px;
+	background-color:purple;
+	float:left;
+	margin-left:0px;
+}
+#default{
+	width:80px;
+	height:50px;
+	border-radius:10px;
+	background-color:red;
+}
+#submit{
+	width:80px;
+	height:50px;
+	border-radius:10px;
+	background-color:green;
+}
+#trigger_bar{
+	width:110px;
+	height:100px;
+	/* background-color:purple; */
+	float:right;
+	cursor:pointer;
+	
+}

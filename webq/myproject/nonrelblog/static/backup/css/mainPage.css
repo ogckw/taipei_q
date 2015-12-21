@@ -1,0 +1,62 @@
+body{
+	overflow-x:hidden;
+	/* overflow-y:hidden; */
+}
+#big_pic{
+	width:100%;
+	height:600px;
+	/* border:1px solid black; */
+	position:absolute;
+	top:0;
+	left:0;
+}
+header{
+	width:100%;
+	height:50px;
+	background-color:white;
+	position:fixed;
+	opacity:0.2;
+}
+#logo{
+	width:120px;
+	height:40px;
+	float:left;
+	margin:5px 5px;
+	background-color:blue;
+	cursor:pointer;
+}
+#theme{
+	width:50%;
+	height:40px;
+	/* position:absolute;
+	top:5px;
+	left:8px; */
+	float:left;
+	margin-top:5px;
+	margin-left:16%;
+	background-color:blue;
+	text-align:center;
+}
+#main{
+	font-size:35px;
+	color:white;
+}
+section{
+	width:100%;
+	height:615px;
+	background-color:gray;
+	position:absolute;
+	top:50px;
+	z-index:1px;
+}
+#gmap{
+	width:100%;
+	height:615px;
+	position:absolute;
+	z-index:1;
+}
+
+
+
+
+

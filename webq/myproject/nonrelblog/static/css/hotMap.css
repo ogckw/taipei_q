@@ -1,0 +1,134 @@
+/* #big_pic{
+	width:100%;
+	height:660px;
+	background-color:gray;
+	opacity:0.3;
+	position:absolute;
+	top:0px;
+	left:0px;
+} */
+body{
+	overflow-x:hidden;
+	overflow-y:hidden;
+}
+header{
+	width:100%;
+	height:50px;
+	background-color:#61aeec;
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:5;
+}
+#logo_banner{
+	width:160px;
+	height:40px;
+	/* background-color:red; */
+	position:absolute;
+	top:5px;
+	left:5px;
+	cursor:pointer;
+	z-index:5;
+}
+#theme{
+	width:50%;
+	height:40px;
+	float:left;
+	margin-top:15px;
+	margin-left:14%;
+	/* background-color:blue; */
+}
+#theme > #theme_txt{
+	font-size:35px;
+	color:white;
+	/* background-color:yellow; */
+	Font-family:'cwTeXYen', sans-serif;
+}
+#hotnews{
+	width:150px;
+	height:50px;
+	float:right;
+	margin-right:10px;
+	cursor:pointer;
+}
+#hotnews > img{
+	width:30px;
+	height:30px;
+	float:left;
+	margin-top:10px;
+}
+#hotnews > #news_span_bar{
+	font-size:20px;
+	color:white;
+	float:left;
+	margin-top:15px;
+	Font-family:'cwTeXYen', sans-serif;
+}
+#btm_cor_news{
+	width:0px;
+	height:5px;
+	background-color:white;
+	margin-top:0px;
+	border-radius:3px;
+	transition-property:width;
+	transition-duration:0.5s;
+}
+#hotnews:hover #btm_cor_news{
+	width:110px;
+}
+#mainpage{
+	width:150px;
+	height:50px;
+	float:right;
+	margin-right:20px;
+	cursor:pointer;
+}
+#mainpage > img{
+	width:30px;
+	height:30px;
+	float:left;
+	margin-top:10px;
+}
+#mainpage > #lq_span_bar{
+	font-size:20px;
+	color:white;
+	float:left;
+	margin-top:15px;
+	Font-family:'cwTeXYen', sans-serif;
+}
+#btm_cor_lq{
+	width:0px;
+	height:5px;
+	background-color:white;
+	margin-top:0px;
+	border-radius:3px;
+	transition-property:width;
+	transition-duration:0.5s;
+}
+#mainpage:hover #btm_cor_lq{
+	width:110px;
+}
+#tabs{
+	width:98%;
+	height:540px;
+	position:absolute;
+	top:52px;
+	left:0px;
+	border:10px solid black;
+}
+ul{
+	height:40px;
+}
+li{
+	height:40px;
+}
+#tabs > ul > li > a{
+	Font-family:'cwTeXYen', sans-serif;
+}
+.hotmap{
+	margin-top:-16px;
+	margin-left:-25px;
+	width:1255px;
+	height:495px;
+/* 	border:1px solid black; */
+}

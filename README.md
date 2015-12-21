@@ -1,7 +1,24 @@
 # Project taipeiq is for quality of Taipei
 ### Project Leader:Han
 #### - Member: Leo, Ivan, Hsien, Hwa, Eason ,Yang
+
+### File structure
+
+- dataclean: ETL and input database example.
+- data_defination: The way we define the score of taipei life quality example
+- webq:frontend and backend example
+
+
+note: Some program cannot run because of some environment setup.            
+
+---------------------------------------	   
+	               by Han 2015/12/22
+
+
+
+
 ---------------------------------------
+
 ###  Project Direction
 
         20150918 project start
@@ -48,24 +65,3 @@
 - Web : Han, Leo 
 
 ---------------------------------------
-### Working Gudie in dataclean
-
-- First doing tutorials  how to data clean 
-  
-       for understand how to deal with different dataframe and format to csv
-	   
-	   xml and csv download and solve in python
-
-- Second input data to database
-       
-	   How to input sqlite3 by python
-	   
-	   How to input MySQL by python
-	   
-	   
-- Third Taipei area split to grid
-
-	   Already finish by Han            
-
----------------------------------------	   
-	               by Han 2015/10/20

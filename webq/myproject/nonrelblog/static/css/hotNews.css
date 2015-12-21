@@ -1,0 +1,175 @@
+header{
+	width:100%;
+	height:50px;
+	position:absolute;
+	background-color:#61aeec;
+	top:0px;
+	left:0px;
+}
+#logo_banner{
+	width:15%;
+	height:80%;
+	margin-top:5px;
+	margin-left:5px;
+	float:left;
+	cursor:pointer;
+}
+#theme{
+	width:40%;
+	height:40px;
+	margin-top:15px;
+	margin-left:2%;
+	float:left;
+}
+#theme > #theme_txt{
+	font-size:35px;
+	color:white;
+	Font-family:'cwTeXYen', sans-serif;
+}
+#mainpage{
+	width:12%;
+	height:50px;
+	float:right;
+	margin-right:5%;
+	background-color:red;
+	cursor:pointer;
+}
+#mainpage > img{
+	width:30px;
+	height:30px;
+	float:left;
+	margin-top:10px;
+}
+#mainpage > span{
+	font-size:20px;
+	color:white;
+	float:left;
+	margin-top:15px;
+	Font-family:'cwTeXYen', sans-serif;
+}
+#hotmap{
+	/* width:150px;
+	height:50px;
+	float:right;
+	margin-right:20px;
+	cursor:pointer; */
+	width:12%;
+	height:50px;
+	float:right;
+	background-color:red;
+	cursor:pointer;
+}
+#hotmap > img{
+	width:30px;
+	height:30px;
+	margin-top: 10px;
+	float:left;
+}
+
+
+#hotmap > span{
+	font-size:20px;
+	color:white;
+	float:left;
+	margin-top:15px;
+	Font-family:'cwTeXYen', sans-serif;
+}
+section{
+	width:100%;
+	height:92%;
+	/* background-color:gray; */
+	position:absolute;
+	top:50px;
+	left:0px;
+}
+#left_park{
+	width:20%;
+	height:100%;
+	background-color:green;
+	float:left;
+}
+.btn{
+	width:90%;
+	height:6%;
+	background-color:steelblue;
+	margin-left:5%;
+	margin-top:1%;
+	border-radius:5px;
+	Font-family:'cwTeXYen', sans-serif;
+	font-size:20px;
+	cursor:pointer;
+}
+#emotion{
+	width:40%;
+	height:4.5%;
+	background-color:red;
+	float:left;
+	margin-top:3%;
+	margin-left:30%;
+	text-align:center;
+
+}
+.face{	
+	width:35%;
+	height:15%;
+	float:left;
+	margin-top:5%;
+	margin-left:33%;
+}
+#cneter_park{
+	width:45%;
+	height:100%;
+	background-color:gold;
+	float:left;
+}
+#right_park{
+	width:35%;
+	height:100%;
+	/* background-color:red; */
+	float:left;
+}
+#news{
+	width:100%;
+	height:48.3%;
+	/* border-bottom:3px solid black */
+	/* background-color:lightgreen; */
+	
+}
+#ptt{
+	width:100%;
+	height:48.3%;
+	background-color:lightblue;
+}
+.rd_box{
+	width:100%;
+	height:15%;
+	/* background-color:pink; */
+	margin-bottom:3.2%;
+}
+.rd_box > .populr_box{
+	width:15%;
+	height:100%;
+	background-color:green;
+	float:left;
+	margin-right:1%;
+}
+.rd_box > .title_box{
+	width:65%;
+	height:100%;
+	background-color:green;
+	float:left;
+	margin-right:1%;
+}
+.rd_box > .time_box{
+	width:15%;
+	height:100%;
+	background-color:green;
+	float:left;
+}
+
+
+a{
+	width:5px;
+	height:5px;
+	
+}

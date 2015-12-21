@@ -1,0 +1,100 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<HTML>
+	<HEAD>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="{% static 'css/homePage.css'%}">
+		
+		<!-- JQuery -->
+		<script src="{% static 'js/jquery-1.11.3.js'%}"></script>
+		<script src="{% static 'js/jquery-ui.js'%}"></script>
+		<script src="{% static 'js/mainPage.js'%}"></script>
+		
+		<!-- font CSS -->
+		<link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+		
+		<!-- icon CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		
+		<title>homepage</title>
+	</HEAD>
+	<BODY>
+		<header id="big_background">
+			<div id="menu_bar">
+				<div id="logo_bar">
+					<div id="logo_icon">
+						<img>
+					</div>
+					<h1>Taipei Quality</h1>
+				</div>
+				<div id="slogan_bar">
+					<p>Live，Let your pay have more value</p>
+				</div>
+				<div id="button_bar">
+					<button id="btn_enter" class="btn" type="button" onclick="javascript:location.href='/nonrelblog/mainPage'">Enter
+					</button>
+					<button id="btn_news" class="btn" type="button" onclick="javascript:location.href='/nonrelblog/pptNews'">News
+					</button>
+					<button id="btn_hot" class="btn" type="button" onclick="javascript:location.href='/nonrelblog/hotMap'">Hot Map
+					</button>
+				</div>
+			</div>
+			<div id="service_bar">
+				<div id="env" class="icons_bar">
+					<div class="icon">
+						<i class="fa fa-tree fa-3x"></i>
+					</div>
+					<div class="content">
+						<div class="text">Envirnment</div>
+						<!-- <span class="text">Envirnment</span> -->
+					</div>
+				</div>
+				<div id="shopping" class="icons_bar">
+					<div class="icon">
+						<i class="fa fa-gift fa-3x"></i>
+					</div>
+					<div class="content">
+						<div class="text">Shopping</div>
+						<!-- <span class="text">Shopping</span> -->
+					</div>
+				</div>
+				<div id="traffic" class="icons_bar">
+					<div class="icon">
+						<i class="fa fa-rocket fa-3x"></i>
+					</div>
+					<div class="content">
+						<div class="text">Traffic</div>
+						<!-- <span class="text">Traffic</span> -->
+					</div>
+				</div>
+				<div id="disaster" class="icons_bar">
+					<div class="icon">
+						<i class="fa fa-exclamation-triangle fa-3x"></i>
+					</div>
+					<div class="content">
+						<div class="text">Disaster</div>
+						<!-- <span class="text">Disaster</span> -->
+					</div>
+				</div>
+				<div id="public" class="icons_bar">
+					<div class="icon">
+						<i class="fa fa-university fa-3x"></i>
+					</div>
+					<div class="content">
+						<div class="text">Public</div>
+						<!-- <span class="text">Public</span> -->
+					</div>
+				</div>
+				<div id="security" class="icons_bar">
+					<div class="icon">
+						<i class="fa fa-shield fa-3x"></i>
+					</div>
+					<div class="content">
+						<div class="text">Security</div>
+						<!-- <span class="text">Security</span> -->
+					</div>
+				</div>
+			</div>
+		</header>
+	</BODY>
+</HTML>

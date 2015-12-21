@@ -1,0 +1,102 @@
+var map = L.map('map').setView([51.505, -0.09], 13);
+
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+L.marker([51.5, -0.09]).addTo(map)
+    .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+    .openPopup();
+	
+ var map = L.map('gmap').setView([25.041223,121.5476829], 13);
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery c <a href="http://mapbox.com">Mapbox</a>',	
+    maxZoom: 18,
+    id: 'mapbox.streets',
+    accessToken: 'pk.eyJ1IjoiaHN1aGFuIiwiYSI6ImNpaDVta3lubzAweTl1amx4ajY3ajdyc3IifQ.qRk-5Jc_dVTuocMBOE2c2g'
+     }).addTo(map);
+	 
+	 
+	 
+	 var popupContent = "<p>the noise_score is " +
+		feature.properties.noise_score + "</p>" +
+		"<p> the hospital_score is " + feature.properties.hospital_score + "</p>" + 
+		"<p> the school_score is " + feature.properties.school_score + "</p>" + 
+		"<p> the mrt_score is " + feature.properties.mrt_score + "</p>" + 
+		"<p> the air_score is " + feature.properties.air_score + "</p>"
+		;
+		if (feature.properties && feature.properties.popupContent) {
+				popupContent += feature.properties.popupContent;
+			}
+		layer.bindPopup(popupContent);
+		
+		
+		
+	
+	
+	{"geometry": {"coordinates": [[[25.12, 121.457], [25.12, 121.462], [25.125, 121.457], [25.125, 121.462]]], "type": "Polygon"}, "properties": {"country": "Spain"}, "type": "Feature"}
+	
+	{"type": "FeatureCollection", 
+	"features": [
+	[{"geometry": {"type": "Polygon", "coordinates": [[[121.45700000000001, 25.12], [121.462, 25.12], [121.462, 25.125], [121.45700000000001, 25.125], [121.45700000000001, 25.12]]]}, "type": "Feature", "properties": {"noise_score": 13.88, "hospital_score": 0.0, "school_score": 1, "mrt_score": 0, "air_score": 217, "park_score": 4}}}
+	
+	
+	 {
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [-105.00341892242432, 39.75383843460583],
+                    [-105.0008225440979, 39.751891803969535]
+                ]
+            },
+            "properties": {
+                "popupContent": "This is free bus that will take you across downtown.",
+                "underConstruction": false
+            },
+            "id": 1
+        }}
+	"features": [
+	{"geometry": {
+		"type": "Polygon", 
+		"coordinates": [
+		[121.45700000000001, 25.12], 
+		[121.462, 25.12], 
+		[121.462, 25.125],
+		[121.45700000000001, 25.125], 
+		[121.45700000000001, 25.12]]}, 
+	"type": "Feature", 
+	"properties": 
+	{"noise_score": 13.88, "hospital_score": 0.0, "school_score": 1, "mrt_score": 0, "air_score": 217, "park_score": 4}
+	}
+	
+	
+	
+	
+	"somestring".substr(start, length)
+
+例子:
+alert("12345".substr(2,3)); //會印出345
+
+w3c substring()的解釋:
+Extracts the characters from a string, between two specified indices.
+substring()則是抽取出兩個index之間的子字串。index從0開始。
+
+語法:
+"something".substring(from, to)
+
+例子:
+alert("12345".substring(2,3)); //會印出3
+
+
+letter-spacing:3px; 網頁排版技巧 使空行更大
+	
+	
+	
+
+
+	
+

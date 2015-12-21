@@ -1,0 +1,280 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<HTML>
+ 	<HEAD>
+     	<meta charset="UTF-8">
+		
+		<link rel="stylesheet" href="{% static 'css/mainPage.css'%}">
+		
+		<!-- JQuary -->
+		<script src="{% static 'js/jquery-1.11.3.js'%}"></script>
+		<script src="{% static 'js/jquery-ui.js'%}"></script>
+		<script src="{% static 'js/mainPage.js'%}"></script>
+		
+		<!-- Google Map API -->
+		<!-- <script src="http://maps.googleapis.com/maps/api/js"></script>
+		<script src="js/mapAPI.js"></script> -->
+		
+		<!-- Mapbox API -->
+		<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css">
+		<script src="{% static 'js/l.control.geosearch.js' %}"></script>
+		<script src="{% static 'js/l.geosearch.provider.google.js' %}"></script>
+		<link rel="stylesheet" href="{% static 'css/l.geosearch.css' %}"/>
+		
+		<!-- Dashboard CSS -->
+		<link rel="stylesheet" href="{% static 'css/dash.css' %}">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<link href='https://fonts.googleapis.com/css?family=Fredoka+One' rel='stylesheet' type='text/css'>
+		
+		<title>Main Page</title>
+		
+	</HEAD>
+	<BODY>
+		<div id="big_pic">
+			<header>
+				<div id="logo" >
+				</div>
+				<div id="theme">
+					<span>Main Map</span>
+				</div>
+			</header>
+			<div id="selectors">
+				<div id="search_bar">
+					<input id="keying" type="text" value="" placeholder="Search...">
+					<div id="search_icon">
+						<i class="fa fa-search fa-2x"></i>
+					</div>
+				</div>
+				<div id="order_bar">
+					<ul id="sortable">
+						<li>
+							<div id="env" class="service">
+								<img class="imgs" src="{% static 'images/env.png' %}">
+							</div>
+						</li>
+						<li>
+							<div id="sec" class="service">
+								<img class="imgs" src="{% static 'images/security.png'%}">
+							</div>
+							
+						</li>
+						<li>
+							<div id="trf" class="service">
+								<img class="imgs" src="{% static 'images/traffic.png'%}">
+							</div>
+						</li>
+						<li>
+							<div id="shp" class="service">
+								<img class="imgs" src="{% static 'images/shopping.png'%}">
+							</div>
+						</li>
+						<li>
+							<div id="dgr" class="service">
+								<img class="imgs" src="{% static 'images/disaster.png'%}">
+							</div>
+						</li>
+						<li>
+							<div id="pub" class="service">
+								<img class="imgs" src="{% static 'images/public.png' %}">
+							</div>
+						</li>
+					</ul>
+				</div>
+				<!-- <div id="order_bar">
+					<div id="env" class="service">
+						<img class="imgs" src="images/env.png">
+					</div>
+					<div id="sec" class="service">
+						<img class="imgs" src="images/security.png">
+					</div>
+					<div id="trf" class="service">
+						<img class="imgs" src="images/traffic.png">
+					</div>
+					<div id="shp" class="service">
+						<img class="imgs" src="images/shopping.png">
+					</div>
+					<div id="dgr" class="service">
+						<img class="imgs" src="images/disaster.png">
+					</div>
+					<div id="pub" class="service">
+						<img class="imgs" src="images/public.png">
+					</div>
+				</div> -->
+				
+				<div id="button_bar">
+					<button id="clean" type="button">Clean</button>
+					<button id="default" type="button">Default</button>
+					<button id="submit" type="button">Submit</button>
+				</div>
+			</div>
+			<section>
+				<div id="label">
+					<div id="labelin"></div>
+					<div id="dashboard">
+						<ul class="first_lev">
+							<li><i class="fa fa-university fa-2x"></i><a>Public</a>
+								<ul class="second_lev">
+									<li>
+										<input type="checkbox">
+										<i class="fa fa-hospital-o fa-2x"></i>
+										<a>Hospital</a>
+									</li>
+									<li>
+										<input type="checkbox">
+										<i class="fa fa-graduation-cap fa-2x"></i>
+										<a>School</a>
+									</li>
+									<li>
+										<input type="checkbox">
+										<i class="fa fa-futbol-o fa-2x"></i>
+										<a>Park</a>
+									</li>
+								</ul>
+							</li><br>
+							<li><i class="fa fa-rocket fa-2x"></i><a>Traffic</a>
+								<ul class="second_lev">
+									<li>
+										<input type="checkbox">
+										<i class="fa fa-subway fa-2x"></i>
+										<a>Subway</a>
+									</li>
+									<li>
+										<input type="checkbox">
+										<i class="fa fa-bicycle fa-2x"></i>
+										<a>Bicycle</a>
+									</li>
+									<li>
+										<input type="checkbox">
+										<i class="fa fa-bus fa-2x"></i>
+										<a>Bus</a>
+									</li>
+								</ul>
+							</li><br>
+							<li><i class="fa fa-gift fa-2x"></i><a>Shopping</a>
+								<ul class="second_lev">
+									<li>
+										<input type="checkbox">
+										<i class="fa fa-medkit fa-2x"></i>
+										<a>Pharmacy</a>
+									</li>
+									<li>
+										<input type="checkbox">
+										<i class="fa fa-shopping-bag fa-2x"></i>
+										<a>Shopping Area</a>
+									</li><br>
+									<li>
+										<input type="checkbox">
+										<i class="fa fa-shopping-cart fa-2x"></i>
+										<a>Supermarket</a>
+									</li>
+									<li>
+										<input type="checkbox">
+										<i class="fa fa-cutlery fa-2x"></i>
+										<a>Convenience Store</a>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<i class="fa fa-shield fa-2x"></i>
+								<a>Security</a>
+							</li><br> 
+							<li>
+								<i class="fa fa-exclamation-triangle fa-2x"></i>
+								<a>Disaster</a>
+							</li><br>
+							<li>
+								<i class="fa fa-tree fa-2x"></i>
+								<a>Evirnment</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div  id="gmap"></div>
+			</section>
+		</div>
+		<!-- <script></script> -->
+		
+	<script type="text/javascript" src="{% static 'js/taipeitest.js' %}"></script>
+    <script type="text/javascript"> 
+    //start default map
+    var map = L.map('gmap').setView([25.041223,121.5476829], 13);
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    maxZoom: 18,
+    id: 'mapbox.streets',
+    accessToken: 'pk.eyJ1IjoiaHN1aGFuIiwiYSI6ImNpaDVta3lubzAweTl1amx4ajY3ajdyc3IifQ.qRk-5Jc_dVTuocMBOE2c2g'
+     }).addTo(map);
+	
+	//edit style
+    function style(feature) {
+        return {
+			weight: 0,
+            opacity: 0,
+            dashArray: '3',
+            fillOpacity: 0,
+        };
+    }
+	//create varaible to change
+	var geojson;
+	geojson = L.geoJson(taipei, {style: style}).addTo(map);
+    var data = {{mark | safe }};
+	L.marker(data).addTo(map);
+	//search box
+	new L.Control.GeoSearch({
+            provider: new L.GeoSearch.Provider.Google()
+        }).addTo(map);
+	
+	//highlight
+	function highlightFeature(e) {
+        var layer = e.target;
+
+        layer.setStyle({
+            opacity: 1,
+			weight: 5,
+            color: 'steelblue',
+            dashArray: '3',
+            fillOpacity: 0
+        });
+
+        if (!L.Browser.ie && !L.Browser.opera) {
+        layer.bringToFront();
+        }
+    }
+	//return
+	function resetHighlight(e) {
+        geojson.resetStyle(e.target);
+    }
+	//double click zoom in
+	function zoomToFeature(e) {
+        map.fitBounds(e.target.getBounds());
+    }
+	//Listener
+	function onEachFeature(feature, layer) {
+    layer.on({
+        //event
+		mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        dblclick: zoomToFeature
+        });
+		
+	var popupContent = "<p>the noise_score is " +
+		feature.properties.noise_score + "</p>" +
+		"<p> the hospital_score is " + feature.properties.hospital_score + "</p>" + 
+		"<p> the school_score is " + feature.properties.school_score + "</p>" + 
+		"<p> the mrt_score is " + feature.properties.mrt_score + "</p>" + 
+		"<p> the air_score is " + feature.properties.air_score + "</p>"
+		;
+		if (feature.properties && feature.properties.popupContent) {
+				popupContent += feature.properties.popupContent;
+			}
+		layer.bindPopup(popupContent);
+    }
+        geojson = L.geoJson(taipei, {
+        style: style,
+        onEachFeature: onEachFeature
+    }).addTo(map);
+
+    </script>
+	</BODY>
+</HTML>
+
